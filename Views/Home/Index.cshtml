@@ -1,0 +1,31 @@
+﻿@model List<w5i.Models.RegistroAcesso>
+@using w5i.Models
+
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Registro de Acessos</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Tipo</th>
+            <th>Data e Hora de Entrada</th>
+            <th>Data e Hora de Saída</th>
+            <th>Duração</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var registro in Model)
+        {
+            <tr>
+                <td>@registro.Tipo</td>
+                <td>@registro.DataHoraEntrada</td>
+                <td>@(registro.DataHoraSaida.HasValue ? registro.DataHoraSaida.ToString() : "-")</td>
+                <td>@(registro.Duracao.HasValue ? registro.Duracao.ToString() : "-")</td>
+            </tr>
+        }
+    </tbody>
+</table>
